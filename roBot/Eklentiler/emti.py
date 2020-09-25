@@ -22,11 +22,16 @@ async def emtia(client, message):
 
     jsonCikti = json.dumps(jsonVeri, indent=2, sort_keys=False, ensure_ascii=False)
     
-    mesaj = "Emtia Verileri**\n\n"
+    mesaj = ""
     
     for say in range(len(jsonVeri)):
-        bak = jsonVeri[say]
+        mesaj += f"**Emtia Verileri**\n\n"
+        mesaj += f"**{jsonVeri[say]['Emtia']}**\n"
+        mesaj += f"**Son :**  `{jsonVeri[say]['Son']}`\n"
+        mesaj += f"**En Düşük :**  `{jsonVeri[say]['En Düşük']}`\n"
+        mesaj += f"**En Yüksek :**  `{jsonVeri[say]['En Yüksek']}`\n"
+        mesaj += f"**Değişim :**  `{jsonVeri[say]['Değişim']}`\n\n"
         
-        mesaj += f"__{bak['Emtia']}__ | `{bak['Son']}` | {bak['En Düşük']}** | {bak['En Yüksek']} | {bak['Değişim']}\n"
+        #mesaj += f"__{bak['Emtia']}__ | `{bak['Son']}` | {bak['En Düşük']}** | {bak['En Yüksek']} | {bak['Değişim']}\n"
     
     await message.edit(mesaj)
